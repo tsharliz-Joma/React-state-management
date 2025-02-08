@@ -1,12 +1,12 @@
 import {CounterButton} from "./components/CounterButton/CounterButton";
-import {CounterProvider} from "./context/ContextProvider";
+import {RecoilRoot} from "recoil";
 
 function App() {
   return (
-    <CounterProvider>
+    <RecoilRoot>
       <h1>State Management Example</h1>
       <CounterButton />
-    </CounterProvider>
+    </RecoilRoot>
   );
 }
 

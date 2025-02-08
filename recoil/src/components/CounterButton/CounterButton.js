@@ -1,9 +1,10 @@
-import {useState} from "react";
-import {useCounterContext} from "../../hooks/useCounterContext";
+import {useRecoilState} from "recoil";
+import {counterState} from "../../atoms/counterState";
+import {incrementByState} from "../../atoms/incrementByState";
 
 export const CounterButton = () => {
-  const {increment, numberOfClicks} = useCounterContext();
-  const [incrementBy, setIncrementBy] = useState(1);
+  const [numberOfClicks, setNumberOfClicks] = useRecoilState(counterState);
+  const [incrementBy, setIncrementBy] = useRecoilState(incrementByState);
 
   return (
     <>
@@ -16,7 +17,9 @@ export const CounterButton = () => {
           type="number"
         />
       </label>
-      <button onClick={() => increment(incrementBy)}>Click</button>
+      <button onClick={() => setNumberOfClicks(numberOfClicks + incrementBy)}>
+        Click
+      </button>
     </>
   );
 };
